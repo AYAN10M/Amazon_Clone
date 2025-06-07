@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/reusable_components/language_button.dart';
+import 'package:mobile_app/components/reusable_components/custom_button.dart';
 
-class LanguageSelectionPage extends StatelessWidget {
+class LanguageSelectionPage extends StatefulWidget {
   const LanguageSelectionPage({super.key});
+
+  @override
+  State<LanguageSelectionPage> createState() => _LanguageSelectionPageState();
+}
+
+class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
+  String selectedLanguage = 'English'; // Track selected language
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class LanguageSelectionPage extends StatelessWidget {
                   Icon(Icons.language, size: 30, color: Colors.blueGrey),
                   SizedBox(width: 10),
                   Text(
-                    'Choose Your Language',
+                    'Choose your language',
                     style: TextStyle(
                       fontSize: 24,
                       fontFamily: 'Times New Roman',
@@ -33,16 +40,25 @@ class LanguageSelectionPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomLanguageButton(
+                  CustomButton(
                     text: 'English',
-                    onPressed: () {},
-                    color: Colors.blue,
+                    isSelected:
+                        selectedLanguage == 'English', // Check if selected
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'English'; // Update selection
+                      });
+                    },
                   ),
                   const SizedBox(width: 15),
-                  CustomLanguageButton(
-                    text: 'Spanish',
-                    onPressed: () {},
-                    color: Colors.green,
+                  CustomButton(
+                    text: 'हिंदी',
+                    isSelected: selectedLanguage == 'हिंदी',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'हिंदी';
+                      });
+                    },
                   ),
                 ],
               ),
@@ -50,16 +66,24 @@ class LanguageSelectionPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomLanguageButton(
-                    text: 'French',
-                    onPressed: () {},
-                    color: Colors.red,
+                  CustomButton(
+                    text: 'தமிழ்',
+                    isSelected: selectedLanguage == 'தமிழ்',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'தமிழ்';
+                      });
+                    },
                   ),
                   const SizedBox(width: 15),
-                  CustomLanguageButton(
-                    text: 'German',
-                    onPressed: () {},
-                    color: Colors.orange,
+                  CustomButton(
+                    text: 'తెలుగు',
+                    isSelected: selectedLanguage == 'తెలుగు',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'తెలుగు';
+                      });
+                    },
                   ),
                 ],
               ),
@@ -67,16 +91,24 @@ class LanguageSelectionPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomLanguageButton(
-                    text: 'Chinese',
-                    onPressed: () {},
-                    color: Colors.purple,
+                  CustomButton(
+                    text: 'മലയാളം',
+                    isSelected: selectedLanguage == 'മലയാളം',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'മലയാളം';
+                      });
+                    },
                   ),
                   const SizedBox(width: 15),
-                  CustomLanguageButton(
-                    text: 'Japanese',
-                    onPressed: () {},
-                    color: Colors.teal,
+                  CustomButton(
+                    text: 'ಕನ್ನಡ',
+                    isSelected: selectedLanguage == 'ಕನ್ನಡ',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'ಕನ್ನಡ';
+                      });
+                    },
                   ),
                 ],
               ),
@@ -84,18 +116,52 @@ class LanguageSelectionPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomLanguageButton(
-                    text: 'Hindi',
-                    onPressed: () {},
-                    color: Colors.brown,
+                  CustomButton(
+                    text: 'मराठी',
+                    isSelected: selectedLanguage == 'मराठी',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'मराठी';
+                      });
+                    },
                   ),
                   const SizedBox(width: 15),
-                  CustomLanguageButton(
-                    text: 'Arabic',
-                    onPressed: () {},
-                    color: Colors.cyan,
+                  CustomButton(
+                    text: 'বাংলা',
+                    isSelected: selectedLanguage == 'বাংলা',
+                    onPressed: () {
+                      setState(() {
+                        selectedLanguage = 'বাংলা';
+                      });
+                    },
                   ),
                 ],
+              ),
+              const SizedBox(height: 40),
+              // Continue Button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle continue action
+                    Navigator.pushNamed(
+                      context,
+                      '/welcome',
+                    ); // Navigate to welcome screen
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber[400],
+                    foregroundColor: Colors.black87,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    'Continue in $selectedLanguage',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
               ),
             ],
           ),
