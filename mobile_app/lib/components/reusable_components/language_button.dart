@@ -15,19 +15,18 @@ class CustomLanguageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-        ),
+      height: MediaQuery.of(context).size.height * 0.10,
+      width: MediaQuery.of(context).size.width * 0.4,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: TextButton(
         onPressed: () => onPressed(),
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 16.0,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
