@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/screen/home_screen.dart';
+import 'package:mobile_app/screen/layout.dart';
 import 'package:mobile_app/screen/language_selection_page.dart';
 import 'package:mobile_app/screen/login_page.dart';
 import 'package:mobile_app/screen/signup_page.dart';
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => const LanguageSelectionPage(),
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const MyLoginPage(),
         '/signup': (context) => const MySignupPage(),
         '/languageSelection': (context) => const LanguageSelectionPage(),
-        'home': (context) => const MyHomeScreen(),
+        'home': (context) => const MyLayout(),
       },
     );
   }

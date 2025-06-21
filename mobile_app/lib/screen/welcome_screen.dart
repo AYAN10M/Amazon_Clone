@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/screen/layout.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -77,7 +78,17 @@ class WelcomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
-                        onPressed: () {},
+
+                        // Add your login logic here later
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MyLayout(),
+                            ),
+                            (route) => false,
+                          );
+                        },
                         child: const Text(
                           'Already a customer? Sign in',
                           style: TextStyle(
