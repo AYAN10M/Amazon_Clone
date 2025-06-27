@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class MyAccountPage extends StatelessWidget {
@@ -9,13 +8,7 @@ class MyAccountPage extends StatelessWidget {
     return Scaffold(
       appBar: const DashboardCustomAppBar(),
       body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            MyProfile(),
-            SizedBox(height: 24),
-            // Add more account widgets or cards here
-          ],
-        ),
+        child: Column(children: [MyProfile(), SizedBox(height: 24)]),
       ),
     );
   }
@@ -148,18 +141,17 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      margin: const EdgeInsets.all(16),
+      // margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4)),
-        ],
+        // borderRadius: BorderRadius.circular(16),
+        // boxShadow: const [
+        //   BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4)),
+        // ],
       ),
       child: Column(
         children: [
-          // Top row with avatar, name, email, arrow
           Row(
             children: [
               const CircleAvatar(
