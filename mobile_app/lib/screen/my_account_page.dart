@@ -6,9 +6,276 @@ class MyAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: const DashboardCustomAppBar(),
-      body: const SingleChildScrollView(
-        child: Column(children: [MyProfile(), SizedBox(height: 24)]),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            MyProfile(),
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Your Orders'),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Buy Again'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Account'),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Lists'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Your Orders',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Hi! You have no recent orders.',
+                    style: TextStyle(color: Colors.grey.shade600),
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Return to the Homepage'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  Text('Buy Again'),
+                  const SizedBox(height: 8),
+                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Visit Buy Again'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -141,15 +408,8 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      // margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        // borderRadius: BorderRadius.circular(16),
-        // boxShadow: const [
-        //   BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4)),
-        // ],
-      ),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         children: [
           Row(
