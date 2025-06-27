@@ -9,26 +9,36 @@ class LanguageSelectionPage extends StatefulWidget {
 }
 
 class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
-  String selectedLanguage = 'English'; // Track selected language
+  String selectedLanguage = 'English';
+
+  final List<String> languages = [
+    'English',
+    'हिंदी',
+    'தமிழ்',
+    'తెలుగు',
+    'മലയാളം',
+    'ಕನ್ನಡ',
+    'मराठी',
+    'বাংলা',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.all(20.0),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   Icon(Icons.language, size: 30, color: Colors.blueGrey),
                   SizedBox(width: 10),
                   Text(
                     'Choose your language',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 18,
                       fontFamily: 'Times New Roman',
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -36,118 +46,35 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomButton(
-                    text: 'English',
-                    isSelected:
-                        selectedLanguage == 'English', // Check if selected
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'English'; // Update selection
-                      });
-                    },
-                  ),
-                  const SizedBox(width: 15),
-                  CustomButton(
-                    text: 'हिंदी',
-                    isSelected: selectedLanguage == 'हिंदी',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'हिंदी';
-                      });
-                    },
-                  ),
-                ],
+              const SizedBox(height: 30),
+              // Language options in a responsive layout
+              Center(
+                child: Wrap(
+                  spacing: 16,
+                  runSpacing: 16,
+                  alignment: WrapAlignment.center,
+                  children: languages
+                      .map(
+                        (lang) => CustomButton(
+                          text: lang,
+                          isSelected: selectedLanguage == lang,
+                          onPressed: () {
+                            setState(() {
+                              selectedLanguage = lang;
+                            });
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomButton(
-                    text: 'தமிழ்',
-                    isSelected: selectedLanguage == 'தமிழ்',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'தமிழ்';
-                      });
-                    },
-                  ),
-                  const SizedBox(width: 15),
-                  CustomButton(
-                    text: 'తెలుగు',
-                    isSelected: selectedLanguage == 'తెలుగు',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'తెలుగు';
-                      });
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomButton(
-                    text: 'മലയാളം',
-                    isSelected: selectedLanguage == 'മലയാളം',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'മലയാളം';
-                      });
-                    },
-                  ),
-                  const SizedBox(width: 15),
-                  CustomButton(
-                    text: 'ಕನ್ನಡ',
-                    isSelected: selectedLanguage == 'ಕನ್ನಡ',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'ಕನ್ನಡ';
-                      });
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomButton(
-                    text: 'मराठी',
-                    isSelected: selectedLanguage == 'मराठी',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'मराठी';
-                      });
-                    },
-                  ),
-                  const SizedBox(width: 15),
-                  CustomButton(
-                    text: 'বাংলা',
-                    isSelected: selectedLanguage == 'বাংলা',
-                    onPressed: () {
-                      setState(() {
-                        selectedLanguage = 'বাংলা';
-                      });
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
+              const Spacer(),
               // Continue Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle continue action
-                    Navigator.pushNamed(
-                      context,
-                      '/welcome',
-                    ); // Navigate to welcome screen
+                    Navigator.pushNamed(context, '/welcome');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber[400],
@@ -159,7 +86,10 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                   ),
                   child: Text(
                     'Continue in $selectedLanguage',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),

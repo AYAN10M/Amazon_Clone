@@ -6,6 +6,86 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    Widget buildAmazonLogo() {
+      return Padding(
+        padding: EdgeInsets.only(top: screenHeight * 0.03),
+        child: Center(
+          child: Image.asset(
+            'assets/images/amazon_logo.png',
+            width: screenWidth * 0.4,
+            fit: BoxFit.contain,
+          ),
+        ),
+      );
+    }
+
+    Widget buildHeadline() {
+      return const Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: Text(
+          'Sign in to your account',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20, // reduced
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Goldman',
+            color: Colors.black,
+          ),
+        ),
+      );
+    }
+
+    Widget buildDescription() {
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: 14.0),
+        child: Text(
+          'View your wish list\n'
+          'Find & reorder past purchases\n'
+          'Track your purchases',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 14, // reduced
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Goldman',
+            color: Colors.black,
+            height: 1.5,
+          ),
+        ),
+      );
+    }
+
+    Widget buildButton({
+      required String text,
+      required Color backgroundColor,
+      required VoidCallback onPressed,
+    }) {
+      return SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            padding: const EdgeInsets.symmetric(vertical: 12), // reduced
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 14, // reduced
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Goldman',
+              color: Colors.black,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -17,134 +97,48 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              buildAmazonLogo(),
 
-              // Amazon Logo
-              Center(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Image.asset(
-                    'assets/images/amazon_logo.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
+              buildHeadline(),
+
+              buildDescription(),
+
+              SizedBox(height: screenHeight * 0.035),
+
+              buildButton(
+                text: 'Already a customer? Sign in',
+                backgroundColor: Colors.amber,
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const MyLayout()),
+                    (route) => false,
+                  );
+                },
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              const SizedBox(height: 10),
 
-              Center(
-                child: Text(
-                  'Sign in to your account',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                    fontFamily: 'Goldman',
-                  ),
-                ),
+              buildButton(
+                text: 'New to Amazon? Create an account',
+                backgroundColor: Colors.grey[300]!,
+                onPressed: () {},
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                  Text(
-                    'View your wish list\nFind & reorder past purchases\nTrack your purschases',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      fontFamily: 'Goldman',
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
 
-                        // Add your login logic here later
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const MyLayout(),
-                            ),
-                            (route) => false,
-                          );
-                        },
-                        child: const Text(
-                          'Already a customer? Sign in',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Goldman',
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[300],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'New to Amazon? Create an account',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Goldman',
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[300],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Skip sign in',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Goldman',
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(height: 10),
+
+              buildButton(
+                text: 'Skip sign in',
+                backgroundColor: Colors.grey[300]!,
+                onPressed: () {},
               ),
+
+              const SizedBox(height: 30),
             ],
           ),
         ),

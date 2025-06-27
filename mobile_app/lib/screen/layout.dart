@@ -40,14 +40,15 @@ class _MyLayoutState extends State<MyLayout> {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withAlpha(50),
-              spreadRadius: 0,
-              blurRadius: 10,
-              offset: const Offset(0, -0.5),
-            ),
-          ],
+
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black.withAlpha(50),
+          //     spreadRadius: 0,
+          //     blurRadius: 10,
+          //     offset: const Offset(0, -0.5),
+          //   ),
+          // ],
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
