@@ -32,43 +32,41 @@ class DashboardCustomAppBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          border: Border(bottom: BorderSide(color: Colors.black12)),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Image.asset('assets/images/amazon_logo.png', height: 24),
-                const Spacer(),
-                _topBarIcon(Icons.settings_outlined),
-                const SizedBox(width: 12),
-                _topBarIcon(Icons.notifications_none_outlined),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(child: _buildSearchBar()),
-                const SizedBox(width: 8),
-                _iconCircle(Icons.camera_alt_outlined),
-                _iconCircle(Icons.mic_none_outlined),
-                _iconCircle(Icons.qr_code_scanner),
-              ],
-            ),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Colors.black12)),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              const SizedBox(width: 8),
+              Image.asset('assets/images/amazon_logo.png', height: 24),
+              const Spacer(),
+              _topBarIcon(Icons.settings_outlined),
+              const SizedBox(width: 12),
+              _topBarIcon(Icons.notifications_none_outlined),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(child: _buildSearchBar()),
+              const SizedBox(width: 8),
+              _iconCircle(Icons.qr_code_scanner),
+            ],
+          ),
+        ],
       ),
     );
   }
 
   static Widget _buildSearchBar() {
     return Container(
-      height: 44,
+      height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -76,10 +74,10 @@ class DashboardCustomAppBar extends StatelessWidget
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Row(
-        children: const [
-          Icon(Icons.search, color: Colors.grey, size: 20),
-          SizedBox(width: 8),
-          Expanded(
+        children: [
+          const Icon(Icons.search, color: Colors.grey, size: 20),
+          const SizedBox(width: 8),
+          const Expanded(
             child: TextField(
               style: TextStyle(fontSize: 14),
               decoration: InputDecoration(
@@ -91,8 +89,23 @@ class DashboardCustomAppBar extends StatelessWidget
               ),
             ),
           ),
+          const SizedBox(width: 8),
+          _inlineIcon(Icons.camera_alt_outlined),
+          const SizedBox(width: 6),
+          _inlineIcon(Icons.mic_none_outlined),
         ],
       ),
+    );
+  }
+
+  static Widget _inlineIcon(IconData icon) {
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        shape: BoxShape.circle,
+      ),
+      child: Icon(icon, size: 16, color: Colors.black54),
     );
   }
 
@@ -121,91 +134,102 @@ class DashboardCustomAppBar extends StatelessWidget
 
 // =================== PROFILE CARD ===================
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final bool isSmallScreen = screenWidth < 400;
+  State<MyProfile> createState() => _MyProfileState();
+}
 
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      width: double.infinity,
+class _MyProfileState extends State<MyProfile> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 250),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(
-          image: AssetImage('assets/images/background_img.png'),
-          fit: BoxFit.cover,
-        ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
         boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
+          BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4)),
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.35),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Profile Picture
-                Container(
-                  padding: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: const CircleAvatar(
-                    radius: 36,
-                    backgroundImage: AssetImage(
-                      'assets/images/profile_pic.png',
+      child: Column(
+        children: [
+          // Top row with avatar, name, email, arrow
+          Row(
+            children: [
+              const CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage('assets/images/profile_pic.png'),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Ayan Haldar',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
+                    SizedBox(height: 4),
+                    Text(
+                      'ayan@example.com',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 16),
-
-                // Name & Email
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Ayan Haldar',
-                        style: TextStyle(
-                          fontSize: isSmallScreen ? 18 : 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'ayan@example.com',
-                        style: TextStyle(
-                          fontSize: isSmallScreen ? 13 : 14,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
-                  ),
+              ),
+              IconButton(
+                icon: Icon(
+                  isExpanded
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
+                  size: 28,
                 ),
+                onPressed: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+              ),
+            ],
+          ),
 
-                // Settings Icon
-                const Icon(Icons.settings, color: Colors.white70, size: 22),
+          // Expandable content
+          if (isExpanded) ...[
+            const SizedBox(height: 16),
+            const Divider(),
+            const SizedBox(height: 8),
+            Row(
+              children: const [
+                Icon(Icons.phone, size: 18, color: Colors.grey),
+                SizedBox(width: 8),
+                Text('9876543210'),
               ],
             ),
-          ),
-        ),
+            const SizedBox(height: 8),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Icon(Icons.home, size: 18, color: Colors.grey),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    '123, Flutter Street, Developer Nagar, Code City',
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+          ],
+        ],
       ),
     );
   }
