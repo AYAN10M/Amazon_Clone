@@ -5,17 +5,22 @@ class MyAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final buttonStyle = TextButton.styleFrom(
+      foregroundColor: Colors.black,
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    );
+
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: const DashboardCustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyProfile(),
+            const MyProfile(),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
                   Row(
@@ -30,7 +35,8 @@ class MyAccountPage extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text('Your Orders'),
+                          style: buttonStyle,
+                          child: const Text('Your Orders'),
                         ),
                       ),
                       Container(
@@ -42,7 +48,8 @@ class MyAccountPage extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text('Buy Again'),
+                          style: buttonStyle,
+                          child: const Text('Buy Again'),
                         ),
                       ),
                     ],
@@ -60,7 +67,8 @@ class MyAccountPage extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text('Account'),
+                          style: buttonStyle,
+                          child: const Text('Account'),
                         ),
                       ),
                       Container(
@@ -72,24 +80,40 @@ class MyAccountPage extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {},
-                          child: Text('Lists'),
+                          style: buttonStyle,
+                          child: const Text('Lists'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: const [
+                      Icon(Icons.shopping_cart_outlined, size: 24),
+                      SizedBox(width: 8),
+                      Text(
+                        'Your Orders',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    'Your Orders',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Hi! You have no recent orders.',
-                    style: TextStyle(color: Colors.grey.shade600),
+                  Row(
+                    children: [
+                      Text(
+                        'Hi! You have no recent orders.',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   Container(
@@ -100,21 +124,118 @@ class MyAccountPage extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text('Return to the Homepage'),
+                      style: buttonStyle,
+                      child: const Text(
+                        'Return to the Homepage',
+                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
+              padding: const EdgeInsets.all(16),
+              decoration: const BoxDecoration(color: Colors.white),
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  Row(
+                    children: const [
+                      Icon(Icons.shopify_outlined, size: 30),
+                      SizedBox(width: 8),
+                      Text(
+                        'Buy Again',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Text(
+                        'See what others are reordering',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      style: buttonStyle,
+                      child: const Text(
+                        'Return to the Homepage',
+                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 2),
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
-                  Text('Buy Again'),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Icon(Icons.format_list_numbered_outlined, size: 24),
+                      SizedBox(width: 8),
+                      Text(
+                        'Your lists',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
+                        ),
+                      ),
+                      Spacer(),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'See all',
+                          style: TextStyle(
+                            color: Colors.blue.shade700,
+
+                            fontFamily: 'Goldman',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
+                  Row(
+                    children: [
+                      Text(
+                        'See what others are reordering',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.06,
@@ -124,94 +245,228 @@ class MyAccountPage extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text('Visit Buy Again'),
+                      style: buttonStyle,
+                      child: const Text(
+                        'Return to the Homepage',
+                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 2),
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
-                  Text('Buy Again'),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Icon(Icons.account_box_outlined, size: 24),
+                      SizedBox(width: 8),
+                      Text(
+                        'Your Account',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
+                        ),
+                      ),
+                      Spacer(),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'See all',
+                          style: TextStyle(
+                            color: Colors.blue.shade700,
+
+                            fontFamily: 'Goldman',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
+
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
                     ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Visit Buy Again'),
+                    child: Row(
+                      children: const [
+                        CustomTextButton(label: 'Your Orders'),
+                        CustomTextButton(label: 'Your Addresses'),
+                        CustomTextButton(label: 'Amazon Pay UPI'),
+                        CustomTextButton(label: 'Subscribe and Save'),
+                        CustomTextButton(label: 'Your Wish List'),
+                        CustomTextButton(label: 'Your Messages'),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 2),
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
-                  Text('Buy Again'),
-                  const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Icon(Icons.card_giftcard, size: 24),
+                      SizedBox(width: 8),
+                      Text(
+                        'Rewards',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 8),
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
                     width: MediaQuery.of(context).size.width * 0.9,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
                     ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Visit Buy Again'),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Cashback earned',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Goldman',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.account_balance_wallet_outlined,
+                                        size: 16,
+                                      ),
+                                      Text(
+                                        ' ₹0.00',
+                                        style: TextStyle(
+                                          fontFamily: 'Goldman',
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Collected offers',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Goldman',
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.local_offer_outlined,
+                                        size: 16,
+                                      ),
+                                      Text(
+                                        ' 0',
+                                        style: TextStyle(fontFamily: 'Goldman'),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Column(
+                            children: [
+                              Text(
+                                'Scratch card',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Goldman',
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.wallet_giftcard_outlined,
+                                    size: 16,
+                                  ),
+                                  Text(
+                                    ' 0',
+                                    style: TextStyle(fontFamily: 'Goldman'),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 2),
+              margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
-                  Text('Buy Again'),
-                  const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Visit Buy Again'),
-                    ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Icon(Icons.help_center_outlined, size: 24),
+                      SizedBox(width: 8),
+                      Text(
+                        'Need more help?',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Goldman',
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 2),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
-              child: Column(
-                children: [
-                  Text('Buy Again'),
-                  const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 16),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.06,
                     width: MediaQuery.of(context).size.width * 0.9,
@@ -220,55 +475,11 @@ class MyAccountPage extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text('Visit Buy Again'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 2),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
-              child: Column(
-                children: [
-                  Text('Buy Again'),
-                  const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Visit Buy Again'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 2),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(color: Colors.white),
-              child: Column(
-                children: [
-                  Text('Buy Again'),
-                  const SizedBox(height: 8),
-                  Text('See what others are reordering on Buy Again'),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Visit Buy Again'),
+                      style: buttonStyle,
+                      child: const Text(
+                        'Visit Customer Service',
+                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                      ),
                     ),
                   ),
                 ],
@@ -281,7 +492,7 @@ class MyAccountPage extends StatelessWidget {
   }
 }
 
-// =================== APP BAR ===================
+// DashboardCustomAppBar
 
 class DashboardCustomAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -392,7 +603,7 @@ class DashboardCustomAppBar extends StatelessWidget
   }
 }
 
-// =================== PROFILE CARD ===================
+// MyProfile
 
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
@@ -409,7 +620,7 @@ class _MyProfileState extends State<MyProfile> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: Colors.white),
       child: Column(
         children: [
           Row(
@@ -419,21 +630,26 @@ class _MyProfileState extends State<MyProfile> {
                 backgroundImage: AssetImage('assets/images/profile_pic.png'),
               ),
               const SizedBox(width: 16),
-              Expanded(
+              const Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Ayan Haldar',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
+                        fontFamily: 'Goldman',
                       ),
                     ),
                     SizedBox(height: 4),
                     Text(
                       'ayan@example.com',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: 'Goldman',
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
@@ -453,23 +669,21 @@ class _MyProfileState extends State<MyProfile> {
               ),
             ],
           ),
-
-          // Expandable content
           if (isExpanded) ...[
             const SizedBox(height: 16),
             const Divider(),
             const SizedBox(height: 8),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Icon(Icons.phone, size: 18, color: Colors.grey),
                 SizedBox(width: 8),
                 Text('9876543210'),
               ],
             ),
             const SizedBox(height: 8),
-            Row(
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Icon(Icons.home, size: 18, color: Colors.grey),
                 SizedBox(width: 8),
                 Expanded(
@@ -482,6 +696,44 @@ class _MyProfileState extends State<MyProfile> {
             const SizedBox(height: 8),
           ],
         ],
+      ),
+    );
+  }
+}
+
+class CustomTextButton extends StatelessWidget {
+  final String label;
+
+  const CustomTextButton({super.key, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(right: 10),
+      height: MediaQuery.of(context).size.height * 0.06,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      child: Center(
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            minimumSize: Size.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 14,
+              fontFamily: 'Goldman',
+              color: Colors.black,
+            ),
+          ),
+        ),
       ),
     );
   }
