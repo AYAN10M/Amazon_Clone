@@ -7,78 +7,7 @@ class MyDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEFF1F5),
-      body: Column(
-        children: const [
-          DashboardCustomAppBar(),
-          Expanded(child: BodySection()),
-        ],
-      ),
-    );
-  }
-}
-
-// ===================== CUSTOM APP BAR =====================
-
-class DashboardCustomAppBar extends StatelessWidget {
-  const DashboardCustomAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(28),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 8,
-                  offset: Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                const SizedBox(width: 14),
-                const Icon(Icons.search, color: Colors.grey),
-                const SizedBox(width: 6),
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search or ask a question...',
-                      border: InputBorder.none,
-                      isDense: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 12),
-                    ),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.camera_alt_outlined,
-                    color: Colors.grey,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.mic_none_outlined, color: Colors.grey),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.qr_code_scanner, color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-          const HorizontalNavBar(),
-          const SizedBox(height: 12),
-        ],
-      ),
+      body: Column(children: const [Expanded(child: BodySection())]),
     );
   }
 }

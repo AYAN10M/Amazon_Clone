@@ -11,8 +11,7 @@ class MyAccountPage extends StatelessWidget {
     );
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: const DashboardCustomAppBar(),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,68 +19,96 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.grey.shade300),
                         ),
                         child: TextButton(
                           onPressed: () {},
                           style: buttonStyle,
-                          child: const Text('Your Orders'),
+                          child: const Text(
+                            'Your Orders',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontFamily: 'Goldman',
+                            ),
+                          ),
                         ),
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.grey.shade300),
                         ),
                         child: TextButton(
                           onPressed: () {},
                           style: buttonStyle,
-                          child: const Text('Buy Again'),
+                          child: const Text(
+                            'Buy Again',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontFamily: 'Goldman',
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 16),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.grey.shade300),
                         ),
                         child: TextButton(
                           onPressed: () {},
                           style: buttonStyle,
-                          child: const Text('Account'),
+                          child: const Text(
+                            'Account',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontFamily: 'Goldman',
+                            ),
+                          ),
                         ),
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.grey.shade300),
                         ),
                         child: TextButton(
                           onPressed: () {},
                           style: buttonStyle,
-                          child: const Text('Lists'),
+                          child: const Text(
+                            'Lists',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontFamily: 'Goldman',
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -89,7 +116,11 @@ class MyAccountPage extends StatelessWidget {
                   const SizedBox(height: 16),
                   Row(
                     children: const [
-                      Icon(Icons.shopping_cart_outlined, size: 24),
+                      Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 24,
+                        color: Colors.white,
+                      ),
                       SizedBox(width: 8),
                       Text(
                         'Your Orders',
@@ -97,7 +128,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -127,7 +158,11 @@ class MyAccountPage extends StatelessWidget {
                       style: buttonStyle,
                       child: const Text(
                         'Return to the Homepage',
-                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Goldman',
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -138,13 +173,17 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
                   Row(
                     children: const [
-                      Icon(Icons.shopify_outlined, size: 30),
+                      Icon(
+                        Icons.shopify_outlined,
+                        color: Colors.white,
+                        size: 30,
+                      ),
                       SizedBox(width: 8),
                       Text(
                         'Buy Again',
@@ -152,7 +191,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -182,7 +221,11 @@ class MyAccountPage extends StatelessWidget {
                       style: buttonStyle,
                       child: const Text(
                         'Return to the Homepage',
-                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontFamily: 'Goldman',
+                        ),
                       ),
                     ),
                   ),
@@ -192,13 +235,17 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Icon(Icons.format_list_numbered_outlined, size: 24),
+                      Icon(
+                        Icons.format_list_numbered_outlined,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                       SizedBox(width: 8),
                       Text(
                         'Your lists',
@@ -206,7 +253,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       Spacer(),
@@ -215,7 +262,7 @@ class MyAccountPage extends StatelessWidget {
                         child: Text(
                           'See all',
                           style: TextStyle(
-                            color: Colors.blue.shade700,
+                            color: Colors.grey.shade300,
 
                             fontFamily: 'Goldman',
                           ),
@@ -248,7 +295,11 @@ class MyAccountPage extends StatelessWidget {
                       style: buttonStyle,
                       child: const Text(
                         'Return to the Homepage',
-                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontFamily: 'Goldman',
+                        ),
                       ),
                     ),
                   ),
@@ -258,13 +309,17 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Icon(Icons.account_box_outlined, size: 24),
+                      Icon(
+                        Icons.account_box_outlined,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                       SizedBox(width: 8),
                       Text(
                         'Your Account',
@@ -272,7 +327,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       Spacer(),
@@ -281,7 +336,7 @@ class MyAccountPage extends StatelessWidget {
                         child: Text(
                           'See all',
                           style: TextStyle(
-                            color: Colors.blue.shade700,
+                            color: Colors.grey.shade300,
 
                             fontFamily: 'Goldman',
                           ),
@@ -314,13 +369,13 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Icon(Icons.card_giftcard, size: 24),
+                      Icon(Icons.card_giftcard, size: 24, color: Colors.white),
                       SizedBox(width: 8),
                       Text(
                         'Rewards',
@@ -328,7 +383,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -356,6 +411,7 @@ class MyAccountPage extends StatelessWidget {
                                         style: TextStyle(
                                           fontSize: 11,
                                           fontWeight: FontWeight.w600,
+                                          color: Colors.white,
                                           fontFamily: 'Goldman',
                                         ),
                                       ),
@@ -365,11 +421,13 @@ class MyAccountPage extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.account_balance_wallet_outlined,
+                                        color: Colors.white,
                                         size: 16,
                                       ),
                                       Text(
                                         ' ₹0.00',
                                         style: TextStyle(
+                                          color: Colors.white,
                                           fontFamily: 'Goldman',
                                           fontSize: 14,
                                         ),
@@ -389,17 +447,22 @@ class MyAccountPage extends StatelessWidget {
                                       fontSize: 11,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Goldman',
+                                      color: Colors.white,
                                     ),
                                   ),
                                   Row(
                                     children: [
                                       Icon(
                                         Icons.local_offer_outlined,
+                                        color: Colors.white,
                                         size: 16,
                                       ),
                                       Text(
                                         ' 0',
-                                        style: TextStyle(fontFamily: 'Goldman'),
+                                        style: TextStyle(
+                                          fontFamily: 'Goldman',
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -418,6 +481,7 @@ class MyAccountPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w600,
+                                  color: Colors.white,
                                   fontFamily: 'Goldman',
                                 ),
                               ),
@@ -426,11 +490,15 @@ class MyAccountPage extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.wallet_giftcard_outlined,
+                                    color: Colors.white,
                                     size: 16,
                                   ),
                                   Text(
                                     ' 0',
-                                    style: TextStyle(fontFamily: 'Goldman'),
+                                    style: TextStyle(
+                                      fontFamily: 'Goldman',
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -447,13 +515,17 @@ class MyAccountPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
               child: Column(
                 children: [
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Icon(Icons.help_center_outlined, size: 24),
+                      Icon(
+                        Icons.help_center_outlined,
+                        size: 24,
+                        color: Colors.white,
+                      ),
                       SizedBox(width: 8),
                       Text(
                         'Need more help?',
@@ -461,7 +533,7 @@ class MyAccountPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
                           fontFamily: 'Goldman',
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -478,7 +550,11 @@ class MyAccountPage extends StatelessWidget {
                       style: buttonStyle,
                       child: const Text(
                         'Visit Customer Service',
-                        style: TextStyle(fontSize: 14, fontFamily: 'Goldman'),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontFamily: 'Goldman',
+                        ),
                       ),
                     ),
                   ),
@@ -492,119 +568,7 @@ class MyAccountPage extends StatelessWidget {
   }
 }
 
-// DashboardCustomAppBar
-
-class DashboardCustomAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const DashboardCustomAppBar({super.key});
-
-  @override
-  Size get preferredSize => const Size.fromHeight(112);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(bottom: BorderSide(color: Colors.black12)),
-      ),
-      child: Column(
-        children: [
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              const SizedBox(width: 8),
-              Image.asset('assets/images/amazon_logo.png', height: 24),
-              const Spacer(),
-              _topBarIcon(Icons.settings_outlined),
-              const SizedBox(width: 12),
-              _topBarIcon(Icons.notifications_none_outlined),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(child: _buildSearchBar()),
-              const SizedBox(width: 8),
-              _iconCircle(Icons.qr_code_scanner),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  static Widget _buildSearchBar() {
-    return Container(
-      height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search, color: Colors.grey, size: 20),
-          const SizedBox(width: 8),
-          const Expanded(
-            child: TextField(
-              style: TextStyle(fontSize: 14),
-              decoration: InputDecoration(
-                hintText: 'Search products, brands and more...',
-                hintStyle: TextStyle(color: Colors.grey),
-                border: InputBorder.none,
-                isDense: true,
-                contentPadding: EdgeInsets.zero,
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          _inlineIcon(Icons.camera_alt_outlined),
-          const SizedBox(width: 6),
-          _inlineIcon(Icons.mic_none_outlined),
-        ],
-      ),
-    );
-  }
-
-  static Widget _inlineIcon(IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        shape: BoxShape.circle,
-      ),
-      child: Icon(icon, size: 16, color: Colors.black54),
-    );
-  }
-
-  static Widget _topBarIcon(IconData icon) {
-    return Icon(icon, size: 22, color: Colors.black87);
-  }
-
-  static Widget _iconCircle(IconData icon) {
-    return Container(
-      height: 36,
-      width: 36,
-      margin: const EdgeInsets.only(left: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      child: IconButton(
-        icon: Icon(icon, size: 18, color: Colors.black54),
-        onPressed: () {},
-        splashRadius: 20,
-      ),
-    );
-  }
-}
-
 // MyProfile
-
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
 
@@ -620,7 +584,7 @@ class _MyProfileState extends State<MyProfile> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       padding: const EdgeInsets.all(16),
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: Colors.grey.shade900),
       child: Column(
         children: [
           Row(
@@ -640,6 +604,7 @@ class _MyProfileState extends State<MyProfile> {
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Goldman',
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 4),
@@ -713,15 +678,16 @@ class CustomTextButton extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.06,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Colors.grey.shade900,
       ),
       child: Center(
         child: TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
+
             minimumSize: Size.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
@@ -730,7 +696,7 @@ class CustomTextButton extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               fontFamily: 'Goldman',
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ),
