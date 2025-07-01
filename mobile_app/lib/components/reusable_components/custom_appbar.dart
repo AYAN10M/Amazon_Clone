@@ -1,75 +1,122 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final String? hintText;
+  final VoidCallback? onSearchTap;
+  final VoidCallback? onMicTap;
+  final VoidCallback? onCameraTap;
+  final ValueChanged<String>? onSearchChanged;
+  final TextEditingController? searchController;
+
+  const CustomAppBar({
+    super.key,
+    this.hintText = 'Search products',
+    this.onSearchTap,
+    this.onMicTap,
+    this.onCameraTap,
+    this.onSearchChanged,
+    this.searchController,
+  });
 
   @override
-  Size get preferredSize => const Size.fromHeight(66); // Adjusted height
+  Size get preferredSize => const Size.fromHeight(66);
 
   @override
   Widget build(BuildContext context) {
+    final double horizontalPadding = MediaQuery.of(context).size.width * 0.04;
+
     return Container(
       color: Colors.black,
-      padding: const EdgeInsets.fromLTRB(4, 10, 4, 10),
+      padding: EdgeInsets.fromLTRB(
+        horizontalPadding,
+        10,
+        horizontalPadding,
+        10,
+      ),
       child: SafeArea(
         bottom: false,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
-              child: Container(
-                height: 44,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  children: [
-                    const Icon(Icons.search, size: 20, color: Colors.white70),
-                    const SizedBox(width: 8),
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search products',
-                          hintStyle: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white54,
-                          ),
-                          border: InputBorder.none,
-                          isDense: true,
-                        ),
-                        style: TextStyle(fontSize: 14, color: Colors.white70),
-                      ),
-                    ),
-                    const Icon(
-                      Icons.mic_none_outlined,
-                      size: 20,
-                      color: Colors.white70,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Container(
-              height: 44,
-              width: 44,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade900,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.camera_alt_outlined,
-                  size: 20,
-                  color: Colors.white70,
-                ),
-                onPressed: () {},
-                padding: EdgeInsets.zero,
-                splashRadius: 22,
-              ),
-            ),
+            Expanded(child: _buildSearchField(context)),
+            const SizedBox(width: 10),
+            _buildCameraButton(context),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSearchField(BuildContext context) {
+    return Container(
+      height: 44,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade900,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade800, width: 0.5),
+      ),
+      child: Row(
+        children: [
+          const SizedBox(width: 12),
+          Icon(Icons.search, size: 20, color: Colors.grey.shade400),
+          const SizedBox(width: 8),
+          Expanded(
+            child: TextField(
+              controller: searchController,
+              onChanged: onSearchChanged,
+              onTap: onSearchTap,
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: TextStyle(fontSize: 15, color: Colors.grey.shade500),
+                border: InputBorder.none,
+                isDense: true,
+                contentPadding: EdgeInsets.zero,
+              ),
+              style: const TextStyle(fontSize: 15, color: Colors.white),
+              cursorColor: Colors.white,
+              textInputAction: TextInputAction.search,
+            ),
+          ),
+          _buildMicButton(context),
+          const SizedBox(width: 8),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMicButton(BuildContext context) {
+    return InkWell(
+      onTap: onMicTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Padding(
+        padding: const EdgeInsets.all(6),
+        child: Icon(
+          Icons.mic_none_outlined,
+          size: 20,
+          color: Colors.grey.shade400,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCameraButton(BuildContext context) {
+    return Container(
+      height: 44,
+      width: 44,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade900,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade800, width: 0.5),
+      ),
+      child: InkWell(
+        onTap: onCameraTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Center(
+          child: Icon(
+            Icons.camera_alt_outlined,
+            size: 20,
+            color: Colors.grey.shade400,
+          ),
         ),
       ),
     );

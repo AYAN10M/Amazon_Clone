@@ -25,29 +25,25 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF1A1A1A),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: const [
-                  Icon(Icons.language, size: 30, color: Colors.blueGrey),
-                  SizedBox(width: 10),
-                  Text(
-                    'Choose your language',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Times New Roman',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ],
+              Text(
+                'Choose your language',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'Goldman',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
-              const SizedBox(height: 30),
-              // Language options in a responsive layout
+              const SizedBox(height: 32),
+
+              // Language selection grid
               Center(
                 child: Wrap(
                   spacing: 16,
@@ -68,7 +64,9 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                       .toList(),
                 ),
               ),
+
               const Spacer(),
+
               // Continue Button
               SizedBox(
                 width: double.infinity,
@@ -77,8 +75,8 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                     Navigator.pushNamed(context, '/welcome');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber[400],
-                    foregroundColor: Colors.black87,
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -88,6 +86,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                     'Continue in $selectedLanguage',
                     style: const TextStyle(
                       fontSize: 16,
+                      fontFamily: 'Goldman',
                       fontWeight: FontWeight.w600,
                     ),
                   ),

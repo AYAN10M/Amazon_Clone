@@ -3,57 +3,61 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final Function onPressed;
-  final bool isSelected; // Add this for selection state
+  final bool isSelected;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
-    required this.isSelected, // Add this parameter
+    required this.isSelected,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.10,
+      height: 56,
       width: MediaQuery.of(context).size.width * 0.4,
       decoration: BoxDecoration(
-        color: isSelected
-            ? Colors.blue[100]
-            : Colors.grey[200], // Change color based on selection
-        borderRadius: BorderRadius.circular(8),
+        color: isSelected ? Colors.white : const Color(0xFF2A2A2A),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: isSelected ? Colors.blue : Colors.grey[300]!, // Add border
-          width: isSelected ? 2 : 1,
+          color: isSelected ? Colors.white : Colors.grey.shade700,
+          width: 1.2,
         ),
       ),
       child: Stack(
         children: [
           TextButton(
             onPressed: () => onPressed(),
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: isSelected
-                    ? Colors.blue[700]
-                    : Colors.grey[700], // Change text color
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: Center(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Goldman',
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Colors.black : Colors.white,
+                ),
               ),
             ),
           ),
-          if (isSelected) // Show checkmark only when selected
+          if (isSelected)
             Positioned(
               top: 8,
               right: 8,
               child: Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
+                width: 18,
+                height: 18,
+                decoration: const BoxDecoration(
+                  color: Colors.black,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.check, color: Colors.white, size: 14),
+                child: const Icon(Icons.check, color: Colors.white, size: 12),
               ),
             ),
         ],
