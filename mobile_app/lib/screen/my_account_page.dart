@@ -569,6 +569,7 @@ class MyAccountPage extends StatelessWidget {
 }
 
 // MyProfile
+
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
 

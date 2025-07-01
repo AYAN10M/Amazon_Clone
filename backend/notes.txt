@@ -1,0 +1,22 @@
+Django and PostgreSQL connection:
+
+    1. Install the binary package:
+        pip install psycopg[binary]
+
+    2. Create a PostgreSQL database using pgAdmin
+
+    3. In settings.py
+            DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'Ecommerce',
+                'USER': 'postgres',
+                'PASSWORD': '2004',
+                'HOST': 'localhost',
+                'PORT': '5432',
+            }
+        }
+    
+    4. Run migrations:
+        python manage.py makemigrations
+        python manage.py migrate

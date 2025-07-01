@@ -7,7 +7,14 @@ class MyDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEFF1F5),
-      body: Column(children: const [Expanded(child: BodySection())]),
+      body: Column(
+        children: const [
+          SizedBox(height: 12),
+          HorizontalNavBar(),
+          SizedBox(height: 12),
+          Expanded(child: BodySection()),
+        ],
+      ),
     );
   }
 }
