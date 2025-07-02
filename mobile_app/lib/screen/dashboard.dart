@@ -5,10 +5,7 @@ class MyDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A),
-      body: const BodySection(),
-    );
+    return Scaffold(backgroundColor: Colors.black, body: const BodySection());
   }
 }
 
