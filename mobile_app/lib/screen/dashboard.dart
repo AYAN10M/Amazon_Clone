@@ -15,23 +15,18 @@ class BodySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Search Bar Card - Full Width
-          const FullWidthCard(
-            title: 'Search Products & Brands',
-            icon: Icons.search,
-          ),
-          const SizedBox(height: 16),
-
           // Flash Deals - Full Width
-          const FullWidthCard(
-            title: 'Flash Sale - Limited Time Offers',
+          FullWidthCard(
+            title: 'Flash Sale',
             icon: Icons.flash_on,
+            isLargeScreen: isLargeScreen,
           ),
           const SizedBox(height: 16),
 
@@ -39,26 +34,36 @@ class BodySection extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 3,
                 child: VerticalCard(
-                  title: 'Mobiles & Electronics',
+                  title: 'Electronics',
                   icon: Icons.phone_android,
+                  isLargeScreen: isLargeScreen,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 flex: 2,
                 child: Column(
-                  children: const [
+                  children: [
                     SmallCard(
-                      title: 'Deals of the Day',
+                      title: 'Today\'s Deals',
                       icon: Icons.local_offer,
+                      isLargeScreen: isLargeScreen,
                     ),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'Best Sellers', icon: Icons.star),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'New Arrivals', icon: Icons.new_releases),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Best Sellers',
+                      icon: Icons.star,
+                      isLargeScreen: isLargeScreen,
+                    ),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'New Items',
+                      icon: Icons.new_releases,
+                      isLargeScreen: isLargeScreen,
+                    ),
                   ],
                 ),
               ),
@@ -68,9 +73,10 @@ class BodySection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Recommendations - Full Width
-          const FullWidthCard(
-            title: 'Recommended For You',
+          FullWidthCard(
+            title: 'Recommended',
             icon: Icons.auto_awesome,
+            isLargeScreen: isLargeScreen,
           ),
           const SizedBox(height: 16),
 
@@ -81,24 +87,34 @@ class BodySection extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Column(
-                  children: const [
-                    SmallCard(title: 'Fashion & Beauty', icon: Icons.checkroom),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'Home & Kitchen', icon: Icons.home),
-                    SizedBox(height: 12),
+                  children: [
                     SmallCard(
-                      title: 'Sports & Fitness',
+                      title: 'Fashion',
+                      icon: Icons.checkroom,
+                      isLargeScreen: isLargeScreen,
+                    ),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Home & Kitchen',
+                      icon: Icons.home,
+                      isLargeScreen: isLargeScreen,
+                    ),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Sports',
                       icon: Icons.fitness_center,
+                      isLargeScreen: isLargeScreen,
                     ),
                   ],
                 ),
               ),
               const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 flex: 3,
                 child: VerticalCard(
-                  title: 'Books & Education',
+                  title: 'Books & Learning',
                   icon: Icons.menu_book,
+                  isLargeScreen: isLargeScreen,
                 ),
               ),
             ],
@@ -107,9 +123,10 @@ class BodySection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Recently Viewed - Full Width
-          const FullWidthCard(
-            title: 'Continue Shopping - Recently Viewed',
+          FullWidthCard(
+            title: 'Recently Viewed',
             icon: Icons.history,
+            isLargeScreen: isLargeScreen,
           ),
           const SizedBox(height: 16),
 
@@ -117,28 +134,35 @@ class BodySection extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 3,
                 child: VerticalCard(
-                  title: 'Groceries & Daily Needs',
+                  title: 'Groceries',
                   icon: Icons.shopping_cart,
+                  isLargeScreen: isLargeScreen,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 flex: 2,
                 child: Column(
-                  children: const [
+                  children: [
                     SmallCard(
-                      title: 'Sell on Our Site',
+                      title: 'Sell Here',
                       icon: Icons.storefront,
+                      isLargeScreen: isLargeScreen,
                     ),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'Gift Cards', icon: Icons.card_giftcard),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     SmallCard(
-                      title: 'Customer Service',
+                      title: 'Gift Cards',
+                      icon: Icons.card_giftcard,
+                      isLargeScreen: isLargeScreen,
+                    ),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Support',
                       icon: Icons.support_agent,
+                      isLargeScreen: isLargeScreen,
                     ),
                   ],
                 ),
@@ -149,9 +173,10 @@ class BodySection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Trending Now - Full Width
-          const FullWidthCard(
-            title: 'Trending Now - Hot Products',
+          FullWidthCard(
+            title: 'Trending Now',
             icon: Icons.trending_up,
+            isLargeScreen: isLargeScreen,
           ),
           const SizedBox(height: 16),
 
@@ -162,17 +187,38 @@ class BodySection extends StatelessWidget {
             crossAxisCount: screenWidth < 600 ? 2 : 3,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
-            childAspectRatio: 0.78,
-            children: const [
-              GridCard(title: 'Baby & Kids', icon: Icons.child_care),
-              GridCard(title: 'Automotive', icon: Icons.directions_car),
+            childAspectRatio: screenWidth < 600 ? 0.85 : 0.78,
+            children: [
               GridCard(
-                title: 'Health & Personal Care',
-                icon: Icons.medical_services,
+                title: 'Baby & Kids',
+                icon: Icons.child_care,
+                isLargeScreen: isLargeScreen,
               ),
-              GridCard(title: 'Office Supplies', icon: Icons.work),
-              GridCard(title: 'Pet Supplies', icon: Icons.pets),
-              GridCard(title: 'Tools & Hardware', icon: Icons.construction),
+              GridCard(
+                title: 'Automotive',
+                icon: Icons.directions_car,
+                isLargeScreen: isLargeScreen,
+              ),
+              GridCard(
+                title: 'Health Care',
+                icon: Icons.medical_services,
+                isLargeScreen: isLargeScreen,
+              ),
+              GridCard(
+                title: 'Office',
+                icon: Icons.work,
+                isLargeScreen: isLargeScreen,
+              ),
+              GridCard(
+                title: 'Pet Care',
+                icon: Icons.pets,
+                isLargeScreen: isLargeScreen,
+              ),
+              GridCard(
+                title: 'Tools',
+                icon: Icons.construction,
+                isLargeScreen: isLargeScreen,
+              ),
             ],
           ),
 
@@ -185,24 +231,34 @@ class BodySection extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Column(
-                  children: const [
+                  children: [
                     SmallCard(
-                      title: 'Track Your Order',
+                      title: 'Track Order',
                       icon: Icons.local_shipping,
+                      isLargeScreen: isLargeScreen,
                     ),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'Your Wishlist', icon: Icons.favorite),
-                    SizedBox(height: 12),
-                    SmallCard(title: 'Coupons & Offers', icon: Icons.discount),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Wishlist',
+                      icon: Icons.favorite,
+                      isLargeScreen: isLargeScreen,
+                    ),
+                    const SizedBox(height: 12),
+                    SmallCard(
+                      title: 'Coupons',
+                      icon: Icons.discount,
+                      isLargeScreen: isLargeScreen,
+                    ),
                   ],
                 ),
               ),
               const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 flex: 3,
                 child: VerticalCard(
-                  title: 'Digital & Software',
+                  title: 'Digital',
                   icon: Icons.computer,
+                  isLargeScreen: isLargeScreen,
                 ),
               ),
             ],
@@ -211,9 +267,10 @@ class BodySection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Special Offers - Full Width
-          const FullWidthCard(
-            title: 'Special Offers Just For You',
+          FullWidthCard(
+            title: 'Special Offers',
             icon: Icons.celebration,
+            isLargeScreen: isLargeScreen,
           ),
 
           const SizedBox(height: 24),
@@ -226,8 +283,14 @@ class BodySection extends StatelessWidget {
 class FullWidthCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final bool isLargeScreen;
 
-  const FullWidthCard({super.key, required this.title, required this.icon});
+  const FullWidthCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.isLargeScreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -236,7 +299,7 @@ class FullWidthCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(isLargeScreen ? 24 : 18),
         decoration: BoxDecoration(
           color: const Color(0xFF2A2A2A),
           borderRadius: BorderRadius.circular(16),
@@ -244,13 +307,13 @@ class FullWidthCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: 40, color: Colors.white),
-            const SizedBox(width: 20),
+            Icon(icon, size: isLargeScreen ? 44 : 36, color: Colors.white),
+            SizedBox(width: isLargeScreen ? 24 : 18),
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: isLargeScreen ? 20 : 16,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Goldman',
                   color: Colors.white,
@@ -259,7 +322,7 @@ class FullWidthCard extends StatelessWidget {
             ),
             Icon(
               Icons.arrow_forward_ios,
-              size: 20,
+              size: isLargeScreen ? 22 : 18,
               color: Colors.grey.shade400,
             ),
           ],
@@ -272,8 +335,14 @@ class FullWidthCard extends StatelessWidget {
 class VerticalCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final bool isLargeScreen;
 
-  const VerticalCard({super.key, required this.title, required this.icon});
+  const VerticalCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.isLargeScreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -281,23 +350,23 @@ class VerticalCard extends StatelessWidget {
       onTap: () {},
       borderRadius: BorderRadius.circular(16),
       child: Container(
-        height: 250,
+        height: isLargeScreen ? 280 : 250,
         decoration: BoxDecoration(
           color: const Color(0xFF2A2A2A),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Colors.grey.shade800),
         ),
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(isLargeScreen ? 20 : 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 50, color: Colors.white),
-            const SizedBox(height: 16),
+            Icon(icon, size: isLargeScreen ? 60 : 48, color: Colors.white),
+            SizedBox(height: isLargeScreen ? 20 : 16),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: isLargeScreen ? 18 : 15,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Goldman',
                 color: Colors.white,
@@ -313,8 +382,14 @@ class VerticalCard extends StatelessWidget {
 class SmallCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final bool isLargeScreen;
 
-  const SmallCard({super.key, required this.title, required this.icon});
+  const SmallCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.isLargeScreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -322,26 +397,28 @@ class SmallCard extends StatelessWidget {
       onTap: () {},
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        height: 75,
+        height: isLargeScreen ? 85 : 75,
         decoration: BoxDecoration(
           color: const Color(0xFF2A2A2A),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.grey.shade800),
         ),
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(isLargeScreen ? 16 : 12),
         child: Row(
           children: [
-            Icon(icon, size: 28, color: Colors.white),
-            const SizedBox(width: 12),
+            Icon(icon, size: isLargeScreen ? 32 : 26, color: Colors.white),
+            SizedBox(width: isLargeScreen ? 16 : 12),
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 13,
+                style: TextStyle(
+                  fontSize: isLargeScreen ? 15 : 12,
                   fontFamily: 'Goldman',
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
@@ -354,8 +431,14 @@ class SmallCard extends StatelessWidget {
 class GridCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final bool isLargeScreen;
 
-  const GridCard({super.key, required this.title, required this.icon});
+  const GridCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.isLargeScreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -368,21 +451,23 @@ class GridCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Colors.grey.shade800),
         ),
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(isLargeScreen ? 20 : 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: Colors.white),
-            const SizedBox(height: 12),
+            Icon(icon, size: isLargeScreen ? 48 : 36, color: Colors.white),
+            SizedBox(height: isLargeScreen ? 16 : 12),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: isLargeScreen ? 16 : 13,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Goldman',
                 color: Colors.white,
               ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

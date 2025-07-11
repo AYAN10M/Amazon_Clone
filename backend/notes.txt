@@ -1,22 +1,200 @@
-Django and PostgreSQL connection:
+# Amazon Clone Backend Setup - Step-by-Step Documentation
 
-    1. Install the binary package:
-        pip install psycopg[binary]
+## 1. Project Initialization
 
-    2. Create a PostgreSQL database using pgAdmin
+### Create Virtual Environment
 
-    3. In settings.py
-            DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'Ecommerce',
-                'USER': 'postgres',
-                'PASSWORD': '2004',
-                'HOST': 'localhost',
-                'PORT': '5432',
-            }
-        }
-    
-    4. Run migrations:
-        python manage.py makemigrations
-        python manage.py migrate
+```bash
+python -m venv env
+```
+
+### Activate Environment (Windows)
+
+```bash
+env\Scripts\activate
+```
+
+### Install Required Packages
+
+```bash
+pip install django djangorestframework psycopg[binary] Pillow django-cors-headers
+```
+
+### Start Django Project and App
+
+```bash
+django-admin startproject myproject .
+python manage.py startapp product
+```
+
+### Add Apps in `settings.py`
+
+```python
+INSTALLED_APPS = [
+    ...,
+    'rest_framework',
+    'corsheaders',
+    'product',
+]
+
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+CORS_ALLOW_ALL_ORIGINS = True
+```
+
+## 2. PostgreSQL Configuration
+
+### Create a Database Using pgAdmin
+
+* Open pgAdmin
+* Create a database named `Ecommerce`
+
+### Update `settings.py` with PostgreSQL Config:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Ecommerce',
+        'USER': 'postgres',
+        'PASSWORD': '2004',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+### Run Migrations
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## 3. Product App Models (product/models.py)
+
+Models Created:
+
+* `Category`
+* `Brand`
+* `Product`
+* `ProductImage`
+* `ProductAttribute`
+* `ProductAttributeValue`
+* `ProductVariation`
+* `ProductVariationAttribute`
+* `ProductReview`
+* `ProductTag`
+* `ProductTagRelation`
+* `Wishlist`
+* `ProductComparison`
+
+> `Seller` model was commented out to avoid dealing with custom users for now.
+
+Each model includes fields like:
+
+* Slugs
+* ImageFields (used Pillow)
+* ForeignKey and ManyToMany relationships
+* Properties like `is_in_stock`, `discount_percentage`, etc.
+
+## 4. Admin Registration (product/admin.py)
+
+```python
+from django.contrib import admin
+from .models import Category, Brand, Product, ProductImage, ProductAttribute, ProductReview, ProductTag
+
+admin.site.register(Category)
+admin.site.register(Brand)
+admin.site.register(Product)
+admin.site.register(ProductImage)
+admin.site.register(ProductAttribute)
+admin.site.register(ProductReview)
+admin.site.register(ProductTag)
+```
+
+## 5. Django REST Framework (API Layer)
+
+### Create Serializers (product/serializers.py)
+
+```python
+from rest_framework import serializers
+from .models import Product
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+```
+
+### Create ViewSet (product/views.py)
+
+```python
+from rest_framework import viewsets
+from .models import Product
+from .serializers import ProductSerializer
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+```
+
+### Register URL Routes (myproject/urls.py)
+
+```python
+from rest_framework.routers import DefaultRouter
+from product.views import ProductViewSet
+
+router = DefaultRouter()
+router.register(r'products', ProductViewSet)
+
+urlpatterns = [
+    path('api/', include(router.urls)),
+]
+```
+
+API endpoint ready at:
+
+```
+http://127.0.0.1:8000/api/products/
+```
+
+## 6. CORS Headers for Flutter Access
+
+```bash
+pip install django-cors-headers
+```
+
+Add to `settings.py`:
+
+```python
+INSTALLED_APPS += ['corsheaders']
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+CORS_ALLOW_ALL_ORIGINS = True
+```
+
+## 7. Flutter Integration (Frontend)
+
+### HTTP Call in Flutter (uses http package)
+
+```dart
+final response = await http.get(Uri.parse('http://192.168.56.1:8000/api/products/'));
+```
+
+### Display Product List with Expansion
+
+* Used `ListView.builder`
+* Expanded product cards with stock, compare price, SKU, model number, etc.
+* Tracked expanded tiles using `Set<int>`
+
+## 8. Local Server Configuration
+
+To access from device:
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+Use your local IP (e.g., `192.168.56.1`) in the Flutter app, not `127.0.0.1`.
+
+---
+
