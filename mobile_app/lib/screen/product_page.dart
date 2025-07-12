@@ -14,8 +14,7 @@ class _ProductPageState extends State<ProductPage> {
   late Future<Product> product;
 
   Future<Product> fetchProduct() async {
-    const String productId =
-        '470b112b-3517-44ce-a8a4-ffd9ea6aa697'; // Replace with actual UUID
+    const String productId = '470b112b-3517-44ce-a8a4-ffd9ea6aa697';
     final response = await http.get(
       Uri.parse('http://192.168.29.92:8000/api/products/$productId/'),
     );

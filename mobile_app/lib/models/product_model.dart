@@ -29,14 +29,15 @@ class Product {
       brand: json['brand'] is String
           ? json['brand']
           : json['brand']?['name'] ?? 'No brand',
-      imageUrl:
-          (json['images'] != null &&
-              json['images'] is List &&
-              json['images'].isNotEmpty)
+      imageUrl: json['images'].isNotEmpty
           ? json['images'][0]['image']
           : 'https://via.placeholder.com/300',
     );
   }
+
+  get images => null;
+
+  String? get shortDescription => null;
 
   static Product fromJsonString(String body) {
     final Map<String, dynamic> jsonData = jsonDecode(body);
