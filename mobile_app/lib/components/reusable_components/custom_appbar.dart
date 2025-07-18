@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/screen/search_result_page.dart'; // <-- Make sure this import is correct
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? hintText;
@@ -20,6 +21,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(66);
+
+  void _handleSearch(BuildContext context, String query) {
+    if (query.trim().isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => SearchResultsPage(query: query)),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +74,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: TextField(
               controller: searchController,
               onChanged: onSearchChanged,
+              onSubmitted: (query) => _handleSearch(context, query),
               onTap: onSearchTap,
               decoration: InputDecoration(
                 hintText: hintText,

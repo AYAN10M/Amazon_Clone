@@ -68,7 +68,7 @@ class WelcomeScreen extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber[400],
+                    backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
@@ -119,7 +119,13 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 12),
 
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const MyLayout()),
+                    (route) => false,
+                  );
+                },
                 child: Text(
                   'Skip for now',
                   style: TextStyle(

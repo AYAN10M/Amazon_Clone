@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, filters
 from .models import Product, Category, Brand
 from .serializers import ProductSerializer, CategorySerializer, BrandSerializer
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.filter(status='active')
     serializer_class = ProductSerializer
+    filter_backends = [filters.SearchFilter]    
+    search_fields = ['title', 'description', 'slug']
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()

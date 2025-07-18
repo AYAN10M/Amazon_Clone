@@ -14,6 +14,7 @@ class MyLayout extends StatefulWidget {
 
 class _MyLayoutState extends State<MyLayout> {
   int _selectedIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
 
   final List<Widget> _pages = [
     const HomePage(),
@@ -32,7 +33,12 @@ class _MyLayoutState extends State<MyLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      backgroundColor: Colors.grey.shade900,
+      appBar: CustomAppBar(
+        searchController: _searchController,
+        onCameraTap: () {},
+        onMicTap: () {},
+      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 56,

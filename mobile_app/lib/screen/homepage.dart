@@ -24,67 +24,60 @@ class _HomePageState extends State<HomePage> {
     final screenHeight = MediaQuery.of(context).size.height;
     final carouselHeight = screenHeight * 0.28;
 
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                CarouselSlider.builder(
-                  itemCount: imageUrls.length,
-                  options: CarouselOptions(
-                    height: carouselHeight,
-                    viewportFraction: 1.0,
-                    enlargeCenterPage: false,
-                    autoPlay: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    },
-                  ),
-                  itemBuilder: (context, index, realIndex) {
-                    return GestureDetector(
-                      onTap: () {},
-                      child: SizedBox(
-                        width: screenWidth,
-                        height: carouselHeight,
-                        child: Image.network(
-                          imageUrls[index],
-                          fit: BoxFit.cover,
-                          width: screenWidth,
-                          height: carouselHeight,
-                        ),
-                      ),
-                    );
+    return SafeArea(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              CarouselSlider.builder(
+                itemCount: imageUrls.length,
+                options: CarouselOptions(
+                  height: carouselHeight,
+                  viewportFraction: 1.0,
+                  enlargeCenterPage: false,
+                  autoPlay: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
                   },
                 ),
-                Positioned(
-                  bottom: 12,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: imageUrls.asMap().entries.map((entry) {
-                      bool isActive = _currentIndex == entry.key;
-                      return AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        width: isActive ? 12 : 8,
-                        height: isActive ? 12 : 8,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: isActive ? Colors.white : Colors.white54,
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                itemBuilder: (context, index, realIndex) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: SizedBox(
+                      width: screenWidth,
+                      height: carouselHeight,
+                      child: Image.network(imageUrls[index], fit: BoxFit.cover),
+                    ),
+                  );
+                },
+              ),
+              Positioned(
+                bottom: 12,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: imageUrls.asMap().entries.map((entry) {
+                    final isActive = _currentIndex == entry.key;
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      width: isActive ? 12 : 8,
+                      height: isActive ? 12 : 8,
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: isActive ? Colors.white : Colors.white54,
+                      ),
+                    );
+                  }).toList(),
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          // Additional content...
+        ],
       ),
     );
   }
