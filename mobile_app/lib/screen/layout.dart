@@ -4,6 +4,7 @@ import 'package:mobile_app/screen/cart_page.dart';
 import 'package:mobile_app/screen/dashboard.dart';
 import 'package:mobile_app/screen/homepage.dart';
 import 'package:mobile_app/screen/my_account_page.dart';
+import 'package:mobile_app/screen/search_result_page.dart';
 
 class MyLayout extends StatefulWidget {
   const MyLayout({super.key});
@@ -15,6 +16,7 @@ class MyLayout extends StatefulWidget {
 class _MyLayoutState extends State<MyLayout> {
   int _selectedIndex = 0;
   final TextEditingController _searchController = TextEditingController();
+  Widget? _searchPage;
 
   final List<Widget> _pages = [
     const HomePage(),
@@ -30,6 +32,30 @@ class _MyLayoutState extends State<MyLayout> {
     Icons.menu,
   ];
 
+  void _handleTabTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _searchPage = null;
+      _searchController.clear();
+    });
+  }
+
+  void _handleSearchSubmitted(String query) {
+    if (query.trim().isEmpty) return;
+
+    setState(() {
+      _searchPage = SearchResultsPage(
+        query: query.trim(),
+        onClearSearch: () {
+          setState(() {
+            _searchPage = null;
+            _searchController.clear();
+          });
+        },
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +64,16 @@ class _MyLayoutState extends State<MyLayout> {
         searchController: _searchController,
         onCameraTap: () {},
         onMicTap: () {},
+        onSearchSubmitted: _handleSearchSubmitted,
+        showBackButton: _searchPage != null,
+        onBack: () {
+          setState(() {
+            _searchPage = null;
+            _searchController.clear();
+          });
+        },
       ),
-      body: _pages[_selectedIndex],
+      body: _searchPage ?? _pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 56,
         color: Colors.black,
@@ -50,7 +84,7 @@ class _MyLayoutState extends State<MyLayout> {
             return Expanded(
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () => setState(() => _selectedIndex = index),
+                onTap: () => _handleTabTap(index),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

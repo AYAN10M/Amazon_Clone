@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/screen/search_result_page.dart'; // <-- Make sure this import is correct
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? hintText;
@@ -7,7 +6,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onMicTap;
   final VoidCallback? onCameraTap;
   final ValueChanged<String>? onSearchChanged;
+  final ValueChanged<String>? onSearchSubmitted;
   final TextEditingController? searchController;
+
+  final bool showBackButton;
+  final VoidCallback? onBack;
 
   const CustomAppBar({
     super.key,
@@ -16,20 +19,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onMicTap,
     this.onCameraTap,
     this.onSearchChanged,
+    this.onSearchSubmitted,
     this.searchController,
+    this.showBackButton = false,
+    this.onBack,
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(66);
-
-  void _handleSearch(BuildContext context, String query) {
-    if (query.trim().isNotEmpty) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => SearchResultsPage(query: query)),
-      );
-    }
-  }
+  Size get preferredSize => const Size.fromHeight(72); // Slightly taller
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +36,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       color: Colors.black,
       padding: EdgeInsets.fromLTRB(
         horizontalPadding,
-        10,
+        12,
         horizontalPadding,
-        10,
+        12,
       ),
       child: SafeArea(
         bottom: false,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(child: _buildSearchField(context)),
+            if (showBackButton) _buildBackButton(context),
+            Expanded(child: _buildSearchField()),
             const SizedBox(width: 10),
-            _buildCameraButton(context),
+            _buildCameraButton(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSearchField(BuildContext context) {
+  Widget _buildSearchField() {
     return Container(
       height: 44,
       decoration: BoxDecoration(
@@ -74,7 +72,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: TextField(
               controller: searchController,
               onChanged: onSearchChanged,
-              onSubmitted: (query) => _handleSearch(context, query),
+              onSubmitted: onSearchSubmitted,
               onTap: onSearchTap,
               decoration: InputDecoration(
                 hintText: hintText,
@@ -88,14 +86,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               textInputAction: TextInputAction.search,
             ),
           ),
-          _buildMicButton(context),
+          _buildMicButton(),
           const SizedBox(width: 8),
         ],
       ),
     );
   }
 
-  Widget _buildMicButton(BuildContext context) {
+  Widget _buildMicButton() {
     return InkWell(
       onTap: onMicTap,
       borderRadius: BorderRadius.circular(20),
@@ -110,7 +108,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildCameraButton(BuildContext context) {
+  Widget _buildCameraButton() {
     return Container(
       height: 44,
       width: 44,
@@ -129,6 +127,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.grey.shade400,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildBackButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: IconButton(
+        onPressed: onBack ?? () => Navigator.of(context).pop(),
+        icon: const Icon(Icons.arrow_back, color: Colors.white),
+        tooltip: 'Back',
       ),
     );
   }
