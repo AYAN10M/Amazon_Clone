@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_app/screen/layout.dart';
+import 'package:mobile_app/screen/login_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -22,14 +23,12 @@ class WelcomeScreen extends StatelessWidget {
 
               Center(
                 child: LottieBuilder.asset(
-                  'assets/animations/lottie/shopping_list.json',
+                  'assets/animations/lottie/Shopping.json',
                   width: width * 0.6,
                   height: height * 0.3,
                   fit: BoxFit.contain,
                 ),
               ),
-
-              const SizedBox(height: 30),
 
               const Text(
                 'Welcome to Amazon',
@@ -92,7 +91,13 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const MyLoginPage()),
+                      (route) => false,
+                    );
+                  },
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     side: BorderSide(color: Colors.grey.shade700),
