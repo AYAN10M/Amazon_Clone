@@ -96,7 +96,11 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
               style: const TextStyle(color: Colors.green),
             ),
             onTap: () {
-              // Handle tap (navigate to product detail maybe)
+              Navigator.pushNamed(
+                context,
+                '/productDetail',
+                arguments: product,
+              );
             },
           ),
         );
